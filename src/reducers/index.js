@@ -3,7 +3,8 @@ import * as actions from '../actions';
 const initialState = {
             guesses: [],
             feedback: 'Make your guess!',
-            correctAnswer: Math.floor(Math.random() * 100) + 1
+            correctAnswer: Math.floor(Math.random() * 100) + 1,
+            showInfoModal: false
 }
 
 export const gameReducer = (state=initialState, action) => {
@@ -11,7 +12,8 @@ export const gameReducer = (state=initialState, action) => {
 		return Object.assign({}, state, {
 			guesses: [],
 			feedback: 'Make your guess!',
-			correctAnswer: Math.floor(Math.random() * 100) + 1
+			correctAnswer: Math.floor(Math.random() * 100) + 1,
+			showInfoModal: false
 		})
 	}
 	else if (action.type === actions.HANDLE_GUESS) {
@@ -44,6 +46,11 @@ export const gameReducer = (state=initialState, action) => {
 		return Object.assign({}, state, {
 			feedback,
             			guesses: [...state.guesses, action.guess]
+		})
+	}
+	else if (action.type === actions.TOGGLE_INFO_MODAL) {
+		return Object.assign({}, state, {
+			showInfoModal: !state.showInfoModal
 		})
 	}
 	return state;

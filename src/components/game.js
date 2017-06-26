@@ -7,7 +7,7 @@ import GuessCount  from './guess-count';
 import GuessList from './guess-list';
 
 //import the action(s)
-import {newGame, handleGuess} from '../actions';
+import {newGame, handleGuess, toggleInfoModal} from '../actions';
 
 import './game.css';
 
@@ -17,6 +17,10 @@ export class Game extends React.Component {
         this.props.dispatch(newGame());
     }
 
+    toggleInfoModal() {
+        this.props.dispatch(toggleInfoModal());
+    }
+
     handleGuess(guess) {
         this.props.dispatch(handleGuess(guess));
     }
@@ -24,7 +28,8 @@ export class Game extends React.Component {
     render() {
         return (
             <div>
-                <Header onNewGame={() => this.newGame()}/>
+                <Header onNewGame={() => this.newGame()}
+                    toggleInfoModal={() => this.toggleInfoModal()} />
                 <div className="game-container">
                     <GuessSection feedback={this.props.feedback}
                         onGuess={(guess) => this.handleGuess(guess)} />
