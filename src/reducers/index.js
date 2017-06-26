@@ -22,7 +22,6 @@ export const gameReducer = (state=initialState, action) => {
 			return Object.assign({}, state, {
 				feedback: 'Please enter a valid number'
 			});
-			// return?
 		}
 
 		const difference = Math.abs(action.guess - state.correctAnswer);
