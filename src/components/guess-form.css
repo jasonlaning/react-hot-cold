@@ -60,3 +60,7 @@ input:focus {
 :-ms-input-placeholder {  
    color: #95a5a6; 
 }
+
+label {
+	display: none;
+}
